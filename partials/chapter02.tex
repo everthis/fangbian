@@ -157,7 +157,25 @@
      \end{enumerate}
 \end{enumerate}
 
-\par 注：应对集群节点可能出现的故障，可以使用keepalived来解决。http://www.keepalived.org/
+\subsubsection{集群的监控及管理}
+\begin{enumerate}[label=(\alph*)]
+   \item 监控:
+    \begin{enumerate}[label=(\arabic*)]
+      \item Nagios 用来即时监控集群中主机及服务的状态,并给管 理者发送报警信息。
+      \item Cacti 记录集群运作中的各种数据,并绘制出图形,为管 理者提供有效的数据支持。
+    \end{enumerate}
+   \item 管理:
+    \begin{enumerate}[label=(\arabic*)]
+     \item 如果节点较少,可以基于 ssh + key 编写脚本进行管理。
+     \item csync2 也可实现配置文件更改时触发指定脚本的执行。
+     \item 较多的节点可以考虑使用 pssh (parallel ssh) 进行管理。
+     \item FUNC (Fedora Unified Network Controller) 实现对大量节 点的复杂管理。
+    \end{enumerate}
+\end{enumerate}
+
+\par 注：应对集群节点可能出现的故障，可以使用keepalived\footnotemark[1]来解决。
+\fancyfootnotetext{1}{\urlstyle{sf} \url{http://www.keepalived.org/}}
+
 % \par 静态文件，用Varnish缓存
 % \par 对数据库查询的数据，使用Memcached。
 % \par 容灾：赛门铁克，爱数
